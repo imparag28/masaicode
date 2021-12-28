@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Name: <input type="text" id="name">
+    <button onclick="reg()">registration</button>
+</body>
+<script src="./asynjs.js"></script>
+
+</html>
+<script>
+    let queue = ["sumit", "sagar", "babuBhaiyya"]
+    let vaccine = 3
+    function reg() {
+
+        let name = document.getElementById('name').value;
+        queue.push(name)
+
+        let message = `${name} your refistration successfully`
+        alert(message)
+        let mypromise = new Promise(function (resolve, reject) {
+            setInterval(() => {
+                if (queue[0] == name) {
+                    resolve(`${name} is your turn now`)
+                } else if (vaccine <= 0) {
+                    reject("Vaccine OutofStock Visit temmorrow")
+                }
+            }, 2000);
+        })
+
+        mypromise.then((res) => {
+            console.log("res", res)
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
+    function startVac() {
+        vaccine--
+        if (vaccine == 0) {
+            alert(`OutOfStack ${queue} are reamaing`)
+            clearInterval(id)
+        }
+
+        queue.shift()
+       
+        console.log(vaccine)
+        if (queue.length == 0) {
+            clearInterval(id)
+        }
+        console.log("queue:", queue)
+
+    }
+    let id = setInterval(startVac, 3000)
+    startVac();
+</script>

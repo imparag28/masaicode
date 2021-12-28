@@ -1,0 +1,36 @@
+//simulate a Payment Process
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<form action="" onsubmit="getDet(event)">
+    Name <input type="text" id="name">
+    Card Number<input type="enter Card  no" id="number">
+  
+    CVV <input type="CVV" id="cvv"> 
+     <input type="submit">
+</form>
+<body>
+    
+</body>
+<script>
+  function getDet(e){
+     e.preventDefault(e)  
+    let pay = {
+          name:document.getElementById("name").value,
+          number:document.getElementById("number").value,
+          cvv:document.getElementById("cvv").value
+      }
+  }
+   
+  setTimeout(function(){
+    alert(`Payment sucsseful by `)
+  } ,3000);
+  
+ 
+</script>
+</html>

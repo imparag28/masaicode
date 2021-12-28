@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            row-gap: 20px;
+        }
+
+        #container>div {
+
+
+            margin: 10px;
+            text-align: center;
+            width: 200px;
+            height: 350px;
+            background-color: rgb(252, 250, 250);
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+
+        }
+
+        #container>div>img {
+            width: 200px;
+            height: 200px
+        }
+
+        .smalldiv {
+            display: flex;
+            column-gap: 10px;
+            justify-content: center;
+
+        }
+
+        .smalldiv>* {
+            border: 1px solid black;
+        }
+
+        @media all and (max-width: 500px) {
+            .container {
+                /* On small screens, we are no longer using row direction but column */
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+
+    </div>
+</body>
+<script>
+    var data = [
+        {
+            MRP: 690,
+            type: "Striped Round Neck T-shirt",
+            image_url:
+                "https://assets.myntassets.com/f_webp,dpr_2.0,q_60,w_210,c_limit,fl_progressive/assets/images/1700871/2020/1/22/f932ae44-0fb8-4b92-b7bc-f1756253294b1579692118186-HRX-by-Hrithik-Roshan-Men-Teal-Blue-Printed-T-shirt-90515796-1.jpg",
+        },
+        {
+            MRP: 799,
+
+            type: "Striped Round Neck T-shirt",
+            image_url:
+                "https://assets.myntassets.com/f_webp,dpr_2.0,q_60,w_210,c_limit,fl_progressive/assets/images/10424682/2019/10/30/a034179e-9db3-4a3a-bce0-abae4d1413531572419249956-Roadster-Men-Tshirts-2571572419248675-1.jpg",
+        },
+        {
+            MRP: 899,
+
+            type: "Men Printed Cotton T-shirt",
+            image_url:
+                "https://assets.myntassets.com/f_webp,dpr_2.0,q_60,w_210,c_limit,fl_progressive/assets/images/12816440/2021/2/9/d81a95aa-a268-4c7b-9deb-b960ad1586c41612855488092-HERENOW-Men-Tshirts-5601612855486681-1.jpg",
+        },
+        {
+            MRP: 999,
+            type: "Men Printed Cotton T-shirt",
+            image_url:
+                "https://assets.myntassets.com/f_webp,dpr_2.0,q_60,w_210,c_limit,fl_progressive/assets/images/1700871/2020/1/22/f932ae44-0fb8-4b92-b7bc-f1756253294b1579692118186-HRX-by-Hrithik-Roshan-Men-Teal-Blue-Printed-T-shirt-90515796-1.jpg",
+        },
+        {
+            MRP: 1099,
+
+            type: "Men Printed Cotton T-shirt",
+            image_url:
+                "https://assets.myntassets.com/f_webp,dpr_2.0,q_60,w_210,c_limit,fl_progressive/assets/images/10424682/2019/10/30/a034179e-9db3-4a3a-bce0-abae4d1413531572419249956-Roadster-Men-Tshirts-2571572419248675-1.jpg",
+        },
+        {
+            MRP: 1299,
+            type: "Men Printed Cotton T-shirt",
+            image_url:
+                "https://assets.myntassets.com/f_webp,dpr_2.0,q_60,w_210,c_limit,fl_progressive/assets/images/12816440/2021/2/9/d81a95aa-a268-4c7b-9deb-b960ad1586c41612855488092-HERENOW-Men-Tshirts-5601612855486681-1.jpg",
+        },
+        {
+            MRP: 1399,
+
+            type: "Men Printed Cotton T-shirt",
+            image_url:
+                "https://assets.myntassets.com/f_webp,dpr_2.0,q_60,w_210,c_limit,fl_progressive/assets/images/12816440/2021/2/9/d81a95aa-a268-4c7b-9deb-b960ad1586c41612855488092-HERENOW-Men-Tshirts-5601612855486681-1.jpg",
+        },
+        {
+            MRP: 499,
+            type: "Men Printed Cotton T-shirt",
+            image_url:
+                "https://assets.myntassets.com/f_webp,dpr_2.0,q_60,w_210,c_limit,fl_progressive/assets/images/10424682/2019/10/30/a034179e-9db3-4a3a-bce0-abae4d1413531572419249956-Roadster-Men-Tshirts-2571572419248675-1.jpg",
+        },
+        {
+            MRP: 299,
+
+            type: "Men Printed Cotton T-shirt",
+            image_url:
+                "https://assets.myntassets.com/f_webp,dpr_2.0,q_60,w_210,c_limit,fl_progressive/assets/images/12816440/2021/2/9/d81a95aa-a268-4c7b-9deb-b960ad1586c41612855488092-HERENOW-Men-Tshirts-5601612855486681-1.jpg",
+        },
+        {
+            MRP: 199,
+            type: "Men Printed Cotton T-shirt",
+            image_url:
+                "https://assets.myntassets.com/f_webp,dpr_2.0,q_60,w_210,c_limit,fl_progressive/assets/images/12816440/2021/2/9/d81a95aa-a268-4c7b-9deb-b960ad1586c41612855488092-HERENOW-Men-Tshirts-5601612855486681-1.jpg",
+        },
+    ];
+    data.map(function (elem) {
+        let mainDiv = document.createElement('div')
+        let img = document.createElement('img')
+        img.setAttribute('src', elem.image_url)
+
+        var h4 = document.createElement('h4')
+        h4.textContent = elem.type;
+
+        let smallDiv = document.createElement('div')
+        smallDiv.setAttribute('class', "smalldiv")
+
+        let price = document.createElement('p')
+        let priceMy = document.createElement('p')
+        priceMy.textContent = 45 + "$"
+        price.textContent = elem.MRP
+        smallDiv.append(price, priceMy)
+
+
+        mainDiv.append(img, h4, smallDiv)
+        document.getElementById("container").append(mainDiv)
+    })
+
+</script>
+
+</html>

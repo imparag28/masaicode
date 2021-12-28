@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form action="#">
+            <input type="text" id="text">
+            <button id="btn">Add To List</button>
+        </form>
+       
+    </div>
+    <div class="main-content" id="main-content"></div>
+</body>
+<script>
+   
+    let todo = []
+
+    //    Constructor function declaration
+     function taskObj(task){
+       
+         this.task = task;
+         this.date = new Date()
+         this.status = false
+     }
+     let add = document.getElementById('btn')
+       
+    add.addEventListener('click',(e) => {
+        //addItmes()
+        let task = document.getElementById('text').value
+        e.preventDefault()
+        let a = new taskObj(task)
+        let arr = []
+        let localTodo = localStorage.getItem('todo')
+        if (localTodo != null) {
+          todo = JSON.parse(localTodo);
+        }
+       todo.push(a)
+       localStorage.setItem("todo",JSON.stringify(todo))
+       
+       show_todo();
+
+    })
+    const show_todo = () => {
+        let todoString = localStorage.getItem("todo");
+
+        let content = "";
+
+        if (todoString == null) {
+          //no todo
+          content += "<h3 class='text-white'>NO TODO TO SHOW</h3>";
+        } else {
+          let todos = JSON.parse(todoString);
+          for (let todo of todos.reverse()) {
+            content += `
+              
+              
+              <div class='card mt-2'>
+                <div class='card-body'>
+                       <h3>${todo.task}</h3>
+                       <p>${todo.status}</p> 
+                       <p>${todo.date}</p> 
+                </div>   
+                <button>toggel</button> 
+              </div>
+              
+              
+              `;
+          }
+        }
+
+        document.getElementById("main-content").innerHTML = content;
+      };
+      show_todo();
+</script>
+</html>

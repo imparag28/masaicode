@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Coding Eval
+        </title>
+        <style>
+            body{
+                text-align: center;
+                font-size: 12px;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                margin: 20px;
+                margin-left: 7%;
+                margin-right: 7%;
+            }
+
+            .container1{
+                display: flex;
+                flex-direction: row;
+            }
+            .container1>div{
+                height: auto;
+                padding: 20px;
+                background-color: gold;
+                margin: 20px;
+                flex-grow: 1;
+                color: white;
+                border-radius: 5px;
+            }
+            .container1+div{
+                padding-top: 30px;
+                font-size: 40px;
+                font-weight: 600;
+                color: darkblue;
+                padding-bottom: 20px;
+            }
+            .box1{
+                height: 70px;
+                width: 70px;
+                float: left;
+                margin: 5px;
+                margin-right: 20px;
+            }
+            .box1~div{
+                padding-top: 10px;
+                text-align: left;
+                font-size: 15px;
+            }
+            .box1+div{
+                font-size: 23px;
+            }
+            .grid1{
+                display: grid;
+                grid-gap: 0px;
+                width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+                grid-template-columns: auto auto auto auto;
+                grid-template-rows: auto;
+            }
+
+            .grid1>div{
+                background-color:ghostwhite;
+                padding: 5px;
+                font-size: 15px;
+                border-radius: 5px;
+            }
+            .grid2{
+                margin-top: 30px;
+                display: grid;
+                grid-template-columns: auto auto auto;
+                grid-template-rows: auto;
+                grid-gap: 40px;
+
+            }
+            .grid2>div{
+                width: 100%;
+                height: auto;
+                font-size: 15px;
+                text-align: left;
+                background-color: ghostwhite;
+                
+            }
+            .img1{
+                width: 100%;
+            }
+            .g2c1{
+                margin: 7%;
+            }
+            .g2c2{
+                padding-top: 10px;
+                font-weight: 600;
+                font-size: 18px;
+            }
+            .g2c3{
+                color: grey;
+                padding-top: 10px;
+            }
+            .g2c4{
+                border: 1px solid cyan;
+                margin-top: 10px;
+                padding: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+                color: cyan;
+                text-align: center;
+                width: 30%;
+                border-radius: 2px;
+            }
+            #c1id1{
+                background-color: blue;
+            }
+            #c1id2{
+                background-color: teal;
+            }
+            #g1id1{
+                background-color: turquoise;
+            }
+            @media only screen and (max-width:1200px) {
+                .grid2{
+                    margin-top: 30px;
+                    display: grid;
+                    grid-template-columns: auto auto;
+                    grid-template-rows: auto auto;
+                    grid-gap: 40px;
+
+                }
+                .grid1{
+                    display: grid;
+                    grid-gap: 0px;
+                    width: 400px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    grid-template-columns: auto auto;
+                    grid-template-rows: auto auto;
+                }
+
+                
+            }
+            @media only screen and (max-width:768px) {
+                .grid2{
+                    grid-template-columns: auto;
+                    grid-template-rows: auto auto auto;
+
+                }
+                .grid1{
+                    grid-gap: 0px;
+                    width: 200px;
+                    grid-template-columns: auto;
+                    grid-template-rows: auto auto auto auto;
+                }
+                .container1{
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div class="container1">
+            <div>
+                <div class="box1"><img src="https://via.placeholder.com/70"/></div>
+                <div>Scholarship</div>
+                <div>Available</div>
+            </div>
+            <div id="c1id1">
+                <div class="box1"><img src="https://via.placeholder.com/70" /></div>
+                <div>Scholarship</div>
+                <div>Available</div>
+            </div>
+            <div id="c1id2">
+                <div class="box1"><img src="https://via.placeholder.com/70" /></div>
+                <div>Scholarship</div>
+                <div>Available</div>
+            </div>
+        </div>
+        <div>Popular Program</div>
+        <div class="grid1">
+            <div id="g1id1">Graduate</div>
+            <div>Postgraduate</div>
+            <div>PHD Scholarship</div>
+            <div>Training</div>
+
+        </div>
+        <div class="grid2">
+            <div>
+                <img class="img1" src="https://via.placeholder.com/200x100" />
+                <div class="g2c1">
+                    <div>Agriculture</div>
+                    <div class="g2c2">Chemical Engineering</div>
+                    <div class="g2c3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        scelerisque, tellus vehicula viverra euismod</div>
+                    <div class="g2c4">Apply Now</div>
+                </div>
+            </div>
+        <div>
+            <div>
+                <img class="img1" src="https://via.placeholder.com/200x100" />
+                <div class="g2c1">
+                    <div>Agriculture</div>
+                    <div class="g2c2">Mechanical Engineering</div>
+                    <div class="g2c3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        scelerisque, tellus vehicula viverra euismod</div>
+                    <div class="g2c4">Apply Now</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div>
+                <img class="img1" src="https://via.placeholder.com/200x100" />
+                <div class="g2c1">
+                    <div>Agriculture</div>
+                    <div class="g2c2">Bio Engineering</div>
+                    <div class="g2c3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        scelerisque, tellus vehicula viverra euismod</div>
+                    <div class="g2c4">Apply Now</div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </body>
+</html>
+
+    © 2021 GitHub, Inc.
+
+    Terms
+    Privacy
+    Security
+    Status
+    Docs
+    Contact GitHub
+    Pricing
+    API
+    Training
+    Blog
+    About
+
+Loading complete

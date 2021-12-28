@@ -1,0 +1,30 @@
+//let arr = [1,2,3] //this is how you create it 
+let arr2 = new Array(1,2,3) // this is how js does work internally
+console.log("arr2",arr2)
+
+
+
+function MyArray(){
+    this.length = arguments.length;
+    Object.defineProperty(this,"length",{
+        writable:true,
+        enumerable:false
+    })
+    for(let i = 0;i<this.length;i++){
+        this[i] = arguments[i]
+    }
+  
+}
+MyArray.prototype.pu = function(el){
+    this[this.length] = el
+    this.length++;
+}
+MyArray.prototype.re = function(el){
+    let index = this.length-1
+    delete this[index]
+    this.length--
+}
+let masai_arr = new MyArray(1,2,3)
+masai_arr.pu(9)
+masai_arr.re()
+console.log("masai_arr:", Object.values(masai_arr) )

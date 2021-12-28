@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        #main {
+            border: 1px solid black;
+            height: 600px
+        }
+
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            height: 40px;
+            left: 100px;
+            border: 1px solid black;
+
+        }
+        nav>button{
+            
+        }
+        #cont{
+
+            display: flex;
+            border: 1px solid red;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            
+        }
+        #cont form{
+            display: flex;
+            border: 1px solid green;
+            flex-direction: column;
+            width: 200px;
+            column-gap: 10px;
+          
+            
+        }
+        input{
+            margin: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <nav id="container">
+            <button id="home">Home</button>
+            <button id="login">Login </button>
+            <button id="singup">Singup</button>
+        </nav>
+        <div id="cont">
+            <form action="" onsubmit="signUp()">
+               
+                <input type="text" name="" id="name" placeholder="Enter Your FullName">
+                <input type="email" name="" id="email" placeholder="Enter EmailId">
+                <input type="password" name="" id="pass" placeholder="Enter your password">
+                <input type="submit" value="Submit" placeholder="">
+            </form>
+        </div>
+    </div>
+    
+
+</body>
+ <script>
+      function signUp(){
+        let name = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+        let pass = document.getElementById('pass').value;
+        console.log(name)
+        let user = {
+            name:name,
+            email:email,
+            pass:pass
+        }
+
+        let User_info = JSON.parse(localStorage.getItem("User_info"))
+
+        if(User_info === null){
+            User_info = []
+
+        }
+        User_info.push(user)
+        localStorage.setItem('User_info',JSON.stringify(User_info))
+      }
+ </script>
+</html>

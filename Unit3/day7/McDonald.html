@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <select name="cars" id="cars">
+            <option value="">select</option>
+            <option value="big spicy">Big Spicy chicken</option>
+            <option value="paneer">paneer</option>
+            <option value="paneer Wrap">paneer Wrap</option>
+            <option value="Vadapav">Vadapav</option>
+          </select>
+          <button onclick="order()">Order</button>
+          <div id="info">
+            <p id="idname"></p>
+          </div>
+    </div>
+</body>
+<script>
+     let imgs =["https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/iconic/desktop/t-mcdonalds-Big-Mac.jpg?$Category_Desktop$",
+     "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/iconic/desktop/t-mcdonalds-Hamburger.jpg?$Category_Desktop$",
+     "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/iconic/desktop/t-cinnamon-roll-mcbakery.jpg?$Category_Desktop$",
+     "https://www.mcdonalds.com/is/image/content/dam/usa/nfl/nutrition/items/iconic/desktop/t-blueberry-muffin-bakery-mcd.jpg?$Category_Desktop$"
+
+     ]
+   
+    function order(){
+        let x  = document.getElementById("cars")
+        let img = document.createElement('img')
+         let info = document.getElementById('info')
+         let info2 = document.getElementById('idname')
+        let i = x.selectedIndex;
+        console.log( x.options[i].value)
+        let Myorder = new Promise((resolve,reject)=>{
+            setInterval(() => {
+                 let x = "Your order is ready"
+                 
+                  resolve(x,)
+                
+            }, 3000);
+        })
+        Myorder.then((res) => {
+           info2.innerHTML = `${res}:-- ORDER NO${ Math.floor(Math.random() * 10)}`
+           img.src = imgs[i]
+           info.append(img)
+          
+
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+</script>
+</html>

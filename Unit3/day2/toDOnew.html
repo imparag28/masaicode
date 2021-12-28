@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+         body{
+             background: #F8F8F8
+         }
+        .container{
+            display: flex;
+            width: 750px;
+            border: 1px solid black;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 10px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+        .header{
+            border: 1px solid black;
+            text-align: center;
+           
+        }
+        .header>*{
+            margin: 0
+        }
+        .form{
+            text-align: center;
+        }
+       tr{
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+       }
+        th,
+        td {
+            border: 1px solid white;
+       
+            padding: 10px;
+        }
+    </style>
+    <div class="container" >
+        <div class="header">
+            <h3>Todo List</h3>
+            <h5>Date:-</h5>
+        </div>
+        <div class="form">
+            <form>
+                <label>Task</label>
+                <input id="name" type="text" placeholder="Enter your task" />
+                <input type="submit" value="Add" /> 
+            </form>
+        </div>
+       
+        <button>Delete All</button>
+        <table>
+            <thead>
+                <tr>
+                   
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+    document.querySelector("form").addEventListener("submit", addItem);
+    let count = 1
+    function addItem(event) {
+        console.log("here");
+        event.preventDefault();
+        var name = document.getElementById("name").value;
+
+        if (name == "") {
+            alert("add to list")
+            return
+        }
+
+        var row = document.createElement("tr");
+           let td0 = document.createElement("td")
+           td0.textContent = count;
+           count++
+        var td1 = document.createElement("td");
+        td1.textContent = name;
+
+        var td4 = document.createElement("td");
+        td4.textContent = "delete";
+        td4.addEventListener("click", deleteItem);
+        var td5 = document.createElement("td")
+        td5.classList.add("mystyle");
+        td5.textContent = "false"
+
+        row.append(td0,td1, td4, td5);
+        var tbody = document.querySelector("tbody");
+        tbody.append(row);
+
+        td5.addEventListener("click", () => {
+            let x = document.getElementsByClassName('mystyle')
+            console.log(x.textContent)
+           
+            if (x.innerHTML == "fasle") {
+                x.innerHTML = "true";
+            } 
+        })
+        document.getElementById("name").value = ""
+    }
+
+    function deleteItem(event) {
+        console.log(event.target);
+        event.target.parentNode.remove();
+    }
+
+// create function deleteAll
+</script>
+
+</html>
