@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #cont{
+       display: flex;
+       flex-wrap: nowrap;
+    }
+</style>
+<body>
+    <div id="cont">
+
+    </div>
+</body>
+<script>
+    let url ="https://reqres.in/api/users"
+    let main = document.getElementById('cont')
+    // fetch(url)
+    // .then((res)=>{
+    //    // console.log(res)
+    //    return res.json()
+    // }).then((res)=>{
+    //     console.log(res)
+    // })
+    // .catch(()=>{
+
+    // })
+
+    /////======asyn and wait --======////////
+
+
+    async function getUser(){
+        try {
+            let res = await fetch(url) // here also to await
+        let data = await res.json() // here also to await
+        let user = data.data
+        apppendUser(user)
+        console.log(data)
+
+        } catch (error) {
+            console.log("this error becase of spelling mistek ",error)
+        }
+
+       
+    
+    }
+    getUser()
+
+    function apppendUser(arr){
+
+    arr.forEach(user => {
+             let div = document.createElement('div')
+
+             let img = document.createElement('img')
+
+             img.src = user.avatar
+
+             let name = document.createElement('p')
+
+             name.textContent = user.first_name;
+
+
+             let email = document.createElement('p')
+
+             email.textContent = user.email
+
+             div.append(img ,name,email)
+
+             main.append(div)
+        });
+    }
+     
+</script>
+</html>
