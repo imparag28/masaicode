@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,54 +8,101 @@
     <title>Document</title>
 </head>
 <style>
-    #cont{
-       display: flex;
-       flex-wrap: nowrap;
+    #cont {
+        display: flex;
+         width: 400px;
+         height: 300px;
+        flex-wrap: nowrap;
+        justify-content: center;
+       
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     }
-     img{
-        width: 200px;
-        height: 200px;
+     #info{
+         display: flex;
+         flex-direction: column;
+         margin-left: 20px;
+     }
+
+    img {
+        width: 250px;
+        height: 250px;
     }
 </style>
-<body>
-      <input type="text" name="Enter your movie name" id="text" placeholder="enter movie name">
-       <button onclick="display()" >Serach</button>
-    <div id="cont">
 
+<body>
+    <input type="text" name="name" id="text" placeholder="enter movie name">
+    <button onclick="display()">Serach</button>
+    <div id="cont">
+        
     </div>
 </body>
 <script>
 
-    let main = document.getElementById('cont')
-    let text = document.getElementById('text').value
-    let url = `http://www.omdbapi.com/?&apikey=___&t=${text}`
-    console.log(url)
-    function display(){
 
-    async function getUser(){
-        try {
-            let res = await fetch(url) // here also to await
-           let data = await res.json() // here also to await
-        
-        apppendUser(data)
-        //console.log(data[1].id)
 
-        } catch (error) {
-            console.log("this error becase of spelling mistek ",error)
+    function display() {
+
+        let main = document.getElementById('cont')
+        let text = document.getElementById('text').value
+        let url = `http://www.omdbapi.com/?&apikey=5c978dee&t=${text}`
+        let x = ``
+        async function getUser() {
+            try {
+                let res = await fetch(url) // here also to await
+                let data = await res.json() // here also to await
+                if (data.Error) {
+                    console.log("not found")
+                }
+                apppendUser(data)
+                //console.log(data[1].id)
+
+            } catch (error) {
+                console.log("this error becase of spelling mistek ", error)
+            }
+
+
+
+        }
+        getUser()
+
+        function apppendUser(movie) {
+
+
+            // let div = document.createElement('div')
+
+            // let img = document.createElement('img')
+
+            // img.src = movie.Poster
+
+            // let price = document.createElement('p')
+
+            // price.textContent = movie.Title
+
+
+            // let category = document.createElement('p')
+
+            // category.textContent = movie.Year
+
+            // div.append(img, price, category)
+
+            // main.append(div)
+            x += `<div id="img">
+            <img src="${movie.Poster}" alt="" srcset="">
+        </div>
+        <div id="info">
+            <p>Title:${movie.Title}</p>
+         <p>Year Of realse:${movie.Year}</p>
+         <p>Director:${movie.Director}</p>
+         <p>Writer:${movie.Director}</p>
+        </div>`
+         main.innerHTML = x
+
+
+
         }
 
-       
-    
-    }
-    getUser()
-
-    function apppendUser(arr){
-
-     console.log(arr)
     }
 
-    }
-    
     // fetch(url)
     // .then((res)=>{
     //    // console.log(res)
@@ -69,6 +117,7 @@
     /////======async and wait --======////////
 
 
-     
+
 </script>
+
 </html>
