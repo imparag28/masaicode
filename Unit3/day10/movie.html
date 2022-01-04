@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #movies{
+            height: 300px;
+            width: 300px;
+            border: solid 1px black;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="movie" oninput="debounce(searchMovie,1000)">
+    <div id="movies">
+
+    </div>
+</body>
+<script>
+    let movies_div = document.getElementById('movies')
+    let id;
+   async function searchMovie(){
+   try {
+    let text = document.getElementById('movie').value
+    let url = await fetch(`http://www.omdbapi.com/?apikey=5c978dee&s=${text}`)
+    let data = await url.json()
+    let movies_arr = data.Search
+    appendMovies(movies_arr)
+   } catch (error) {
+      showError(error)
+   }
+    
+   function appendMovies(movies){
+       movies_div.innerHTML = null
+       if(movies === undefined){
+           return false
+       }
+       movies.forEach(element => {
+           let p = document.createElement('p')
+           p.onclick = function(){
+               console.log("click")
+           }
+           p.innerHTML = element.Title
+           movies_div.append(p)
+       });
+   }
+   
+    }
+    function showError(error){
+        movies_div.innerHTML = null
+         img.src = "https://www.google.com/search?q=error+image&client=ubuntu&hs=DHm&channel=fs&tbm=isch&source=iu&ictx=1&fir=Y67xIVBpOJv7fM%252CMXJtxtUxjHcE8M%252C_%253BSV4OFBriF8dLbM%252CfbTzEGobX6m6FM%252C_%253BC4JeDsNIURrG3M%252CXyVm_Ic51MlrKM%252C_%253BNyyEim_FKOz1jM%252CG5NYoMzsfT_z4M%252C_%253Bl-DXic7bvqoxGM%252CxWFYda2YAcEwTM%252C_%253BMP33SAWGihpJKM%252CL5D3wyIRSDezdM%252C_%253B4OLqxSHhm1ixnM%252CxMZ0p-f3JZpzDM%252C_%253Bdm5gZKvwd2DLmM%252CL5D3wyIRSDezdM%252C_%253B1pd0QjK21IFF4M%252C_9sUBCi81NcWtM%252C_%253Bw3bS0lo32deTRM%252CyXAE4vyTXlhuWM%252C_%253Bfj58TJLZQTTQnM%252C4DejGKcbh8li_M%252C_%253BdMoDw52ltCZfiM%252Cur6_Z21RUYg4AM%252C_%253BUP93TQFHMXEWhM%252CNcjoa7J763CFqM%252C_%253B7dF9QZBXrMutDM%252C4V4ViczJDVU0SM%252C_&vet=1&usg=AI4_-kSzmS1P-Kt7C1lo9nv1Cw5fNt4uCg&sa=X&ved=2ahUKEwi62JTM3ZX1AhW-wosBHRXfBu0Q9QF6BAgWEAE#imgrc=MP33SAWGihpJKM"
+        movies_div.append(img)
+    }
+
+    function debounce(func,delay){
+        if(id ){
+            clearTimeout(id)
+        }
+         id = setTimeout(() => {
+            func()
+        }, delay);
+    }
+</script>
+</html>

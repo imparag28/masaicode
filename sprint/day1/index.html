@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result{
+        display: grid;
+        grid-
+    }
+    </style>
+    
+</head>
+<body>
+    <input type="text"   id="video" name="" id="">
+    <button onclick="Search()">Search</button>
+
+    <div id="result">
+    
+    </div>
+</body>
+</html>
+<script>
+     
+    
+      
+      const res = document.getElementById("result")
+
+      async function Search(){
+          
+          try {
+            let video_query = document.getElementById("video").value
+            let response = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${video_query}&type=video&key=AIzaSyAs9NSuJXD6pVEuVqbm5P7pPqHls6bdc-Y`)
+            let data = await response.json()
+           
+            let video = data.items;
+            appendVideo(video)
+          } catch (error) {
+              
+          }
+      }
+     function appendVideo(video){
+         video.map((el)=>{
+            
+            let { 
+                id:{
+                    videoId
+            }} = el;
+            //console.log(videoId)
+            let iframe = document.createElement("iframe")
+
+            iframe.src = `https://www.youtube.com/embed/${videoId}`
+            iframe.width = "400"
+             iframe.height = "400"
+             res.append(iframe)
+         })
+     }
+</script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="bg-white shadow-lg sticky">
+        <div class="px-4 mx-auto mx-w-6xl">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a class="flex items-center py-4 px-4" href="#">
+                           
+                            <span class="font-semibold text-gray-600">Hotel Taj</span>
+                        </a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href=""
+                            class="py-4 px-2 border-green-500 border-b-4 text-gray-500 font-semibold hover:text-green-500 trasition delay-300">Home</a>
+                        <a href=""
+                            class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 trasition delay-300">Login</a>
+                        <a href=""
+                            class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 trasition delay-300">Singup</a>
+                        <a href="./cart.html"
+                            class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 trasition delay-300">Menu
+                           </a>
+                            
+                            
+                </div>
+                <div class="absolute top-0 right-0 h-16 w-16">
+                    <a href="./cart.html"
+                            class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 trasition delay-300">
+                            <span class="bg-green-500 p-5 rounded-full" id="cart">0</span>
+                           </a>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </nav>
+    <div class=" flex flex-cols justify-center items-center">
+      <h1>Your Total Order Rs:---  </h1>
+      <span id="sum"> </span>
+       <input type="text" placeholder="Enter Your address">
+      <button class="bg-green-500 p-4 m-4" onclick="order()">Buy</button>
+    </div>
+</body>
+<script src="script/chekout.js"></script>
+
+</html>

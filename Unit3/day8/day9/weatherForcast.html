@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+<style>
+    #cont {
+        display: flex;
+        width: 400px;
+        height: 300px;
+        flex-wrap: nowrap;
+        justify-content: center;
+
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    }
+
+    #info {
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
+    }
+
+    img {
+        width: 250px;
+        height: 250px;
+    }
+</style>
+
+<body>
+    <input type="text" name="name" id="text" placeholder="enter movie name">
+    <button onclick="display()">Serach</button>
+    <div id="cont">
+
+    </div>
+    
+</body>
+<script>
+
+
+
+    function display() {
+
+        let main = document.getElementById('cont')
+        let text = document.getElementById('text').value
+        let key = "6a224b029dfd01e47389577fe93ab836"
+        let url = `https://api.weatherapi.com/v1/current.json?key=71fd67ef402949ac968110652213012&q=${text}&aqi=yes&days=5&temp_c`
+        let x = ``
+        async function getUser() {
+            try {
+                let res = await fetch(url) // here also to await
+                let data = await res.json() // here also to await
+                apppendUser(data)
+                console.log(data)
+
+            } catch (error) {
+
+                console.log("this error becase of spelling mistek ", error)
+            }
+
+
+
+        }
+        getUser()
+
+        function apppendUser(whether) {
+            x += `<div id="img">
+                <img src="https://${whether.current.condition.icon}" alt="">
+        </div>
+        <div id="info">
+            
+        </div>`
+            main.innerHTML = x
+
+
+
+        }
+
+    }
+
+
+
+</script>
+
+</html>
